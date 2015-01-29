@@ -37,10 +37,12 @@ class GenerateReport extends Command {
 	 */
 	public function fire()
 	{
-		return $this->ask($this->vendorId);
-		$headers = getHeaders();
-		$rows = getData($this->vendorId);
-		$this->table($headers, $rows, 0);
+		//$this->argument('vendorId')
+		//$this->option('currency')
+		//get vendor model
+//		$headers = $this->vendor->getHeaders();
+//		$rows = getData($this->vendorId);
+//		$this->table($headers, $rows, 0);
 	}
 
 	/**
@@ -63,7 +65,7 @@ class GenerateReport extends Command {
 	protected function getOptions()
 	{
 		return [
-//			['vendorId', null, InputOption::VALUE_REQUIRED, 'Id of desired vendor; Check the vendors with the command show:vendors', null],
+			['currency', 'c', InputOption::VALUE_OPTIONAL, 'International Short, defaults to GBR', 'GBR'],
 		];
 	}
 
