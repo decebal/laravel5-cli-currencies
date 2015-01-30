@@ -9,14 +9,47 @@
 namespace app\Models;
 
 
-class Vendor {
+class Vendor extends \ArrayObject
+{
+    private $data = array();
+
+    public function __construct($initialData = array()) {
+        $this->data = $initialData;
+    }
 
     /**
-     *
+     * @param mixed $offset
+     * @param mixed $value
      */
-    public function load()
-    {
+    public function offsetSet($offset, $value) {
+        if (is_null($offset)) {
+            $this->data[] = $value;
+        } else {
+            $this->data[$offset] = $value;
+        }
+    }
 
+    /**
+     * @param mixed $offset
+     * @return bool
+     */
+    public function offsetExists($offset) {
+        return isset($this->data[$offset]);
+    }
+
+    /**
+     * @param mixed $offset
+     */
+    public function offsetUnset($offset) {
+        unset($this->data[$offset]);
+    }
+
+    /**
+     * @param mixed $offset
+     * @return null
+     */
+    public function offsetGet($offset) {
+        return isset($this->data[$offset]) ? $this->data[$offset] : null;
     }
 
     /**

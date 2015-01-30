@@ -1,6 +1,8 @@
 <?php namespace App\Console\Commands;
 
+use App\Services\ReadCsv;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -35,8 +37,9 @@ class GenerateReport extends Command {
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function fire(Filesystem $filesystem)
 	{
+		ReadCsv::loadFromCsv($filesystem);
 		//$this->argument('vendorId')
 		//$this->option('currency')
 		//get vendor model

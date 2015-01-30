@@ -9,12 +9,13 @@
 namespace App\Services;
 
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ReadCsv {
 
-    public function loadFromCsv()
+    public static function loadFromCsv(Filesystem $filesystem)
     {
-        Storage::disk('local')->get('');
+        $fileLines = $filesystem->get('data.csv');
+        var_dump($fileLines);
     }
 }
