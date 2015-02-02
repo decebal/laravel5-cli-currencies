@@ -1,5 +1,7 @@
 <?php namespace App\Providers;
 
+use App\Contracts\CurrencyWebservice;
+use App\Models\Merchant;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -11,7 +13,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+
 	}
 
 	/**
@@ -25,10 +27,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'App\Services\Registrar'
-		);
+
 	}
 
 }
