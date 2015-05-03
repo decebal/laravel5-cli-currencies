@@ -1,6 +1,3 @@
-Affiliate Window Candidate Task
-===============================
-
 ### Installation
 
 - install using composer
